@@ -1,11 +1,48 @@
 import pandas as pd
 import numpy as np
-from scipy import stats
-
-medals_csv = pd.read_csv('medals.csv')
-print(medals_csv)
 
 # 1
+
+medals_df = pd.read_csv('medals.csv')
+# print(medals_df)
+
+# Dimension: 2311 rows x 8 columns
+
+norway = medals_df.loc[(medals_df['NOC'] == 'NOR')]
+# print(norway)
+# norway.to_csv('norway.csv')
+
+olympic_years = norway['Year'].unique()
+# print(sorted(olympic_years))
+
+
+# Get number of medals Norway earned at each Olympic Games
+print((norway['Year'].value_counts()))
+
+'''
+1994    26
+2002    25
+1998    25
+1992    20
+2006    19
+1924    17
+1952    16
+1964    15
+1928    15
+1936    15
+1968    14
+1972    12
+1980    10
+1948    10
+1932    10
+1984     9
+1976     7
+1960     6
+1988     5
+1956     4
+'''
+
+# Norway obtained the highest amount of medals at the 1994 Olympic Games
 
 
 # 2
@@ -51,3 +88,4 @@ new_df = df[df > (df.stack().std() * 3)]
 new_df_csv = new_df.to_csv('new_df_csv2.csv')
 new_df = new_df.fillna(0.0)
 print(new_df)
+
